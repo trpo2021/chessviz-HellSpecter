@@ -62,18 +62,18 @@ void printFigure(int figure, FILE* file)
 
 void fillChessboard(int chessboard[8][8])
 {
-    // Заполняем пустотой поле
+    // имеем поле и заполняем его ничем
     for (int n = 0; n < 8; n++) {
         for (int m = 0; m < 8; m++) {
             chessboard[n][m] = EMPTY;
         }
     }
-    // Заполняем пешки
+    // теперь заполняем нужные клетки пешками
     for (int i = 0; i < 8; i++) {
         chessboard[1][i] = BLACK + PAWN;
         chessboard[6][i] = WHITE + PAWN;
     }
-    // Заполняем фигуры
+    // а теперь заполняем остальным фигурами
     for (int i = 0; i < 8; i++) {
         chessboard[0][i] = BLACK + figures[i];
         chessboard[7][i] = WHITE + figures[i];
@@ -84,11 +84,11 @@ void printChessboard(int chessboard[8][8])
 {
     FILE* html_file;
     html_file = fopen("result.html", "w+");
-    fprintf(html_file, "<html><body><table border='1'>");
+    fprintf(html_file, "<html><body><table border='10' cellspacing='1'>");
     for (int n = 0; n < 8; n++) {
         fprintf(html_file, "<tr>");
         for (int m = 0; m < 8; m++) {
-            fprintf(html_file, "<td height='21'>");
+            fprintf(html_file, "<td align='center' height='22' width='22'>");
             printFigure(chessboard[n][m], html_file);
             fprintf(html_file, "</td>");
         }
